@@ -1,0 +1,131 @@
+.tablefield{
+    padding-left: 400px;
+    padding-right: 400px;
+    margin-top: 20px;
+}
+
+.headtxt{
+    background-color: rgb(76, 96, 246);
+    border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white;
+    color: antiquewhite;
+    font-weight: 600;
+}
+.headtxtplus{
+    background-color: rgb(39, 64, 248);
+    margin-left: 10px ;
+    /* border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white; */
+}
+.headtxtp{
+    width: 350px;
+    background-color: rgb(76, 96, 246);
+    border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white;
+    color: antiquewhite;
+    font-weight: 600;
+}
+
+.blank{
+    background-color: rgb(76, 96, 246);
+    border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white;
+    color: antiquewhite;
+    font-weight: 600;
+    width: 47px;
+    
+}
+
+.headNew{
+    color: white;
+    margin-left: 8px;
+}
+
+.photoUpload{
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.UploadedImage{
+    width: 220px;
+    height: 230px;
+   margin: 3px 3px 3px 3px;
+  
+}
+
+.card{
+    width: 230px;
+    height: 240px;
+    margin-right: 60px;
+}
+.btnclass{
+    margin-left: 45px;
+    margin-top: 3px;
+}
+
+.border{
+    height: 800px;
+    margin: 30px 30px 0px 30px;
+    
+}
+
+.fortrash{
+    padding: 0px;
+    /* height: fit-content; */
+    box-sizing: border-box;
+    font-size: 30px;
+    margin-left: 13px;
+    margin-bottom: 10px;
+}
+.trash{
+    padding: 0;
+    
+}
+.t2{
+    text-align: end;
+    
+} 
+
+.icon{
+
+    width: 25px;
+    margin-bottom: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 23px;
+  }
+  
+  .button-container .btnend {
+    margin-left: 10px; 
+    margin-bottom: 10px;
+  }
+  
+
+
+.recformField{
+    margin-top: 10px;
+}
+
+.input-box{
+    margin-left: 400px;
+    display: inline-block;
+}
+.recomd-A{
+    margin-left: 40px;
+}
+.recA{
+    width: 350px;
+    border-color: black;
+}
+.A-margin{
+    padding: 20px;
+}

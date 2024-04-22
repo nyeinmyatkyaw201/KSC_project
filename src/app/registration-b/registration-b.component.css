@@ -1,0 +1,100 @@
+
+.bg-body-tertiary{
+    background-color: rgb(47, 116, 244)!important;
+}
+.navbar-brand{
+    color: #ffffffff;
+}
+.Name{
+    width: 450px;
+    margin-left:90px ;
+    border-color: black;
+    box-direction: none;
+}
+.Type{
+    width: 450px;
+    margin-left:100px ;
+    border-color: black;
+    box-direction:none;
+}
+.PId{
+    width: 450px;
+    margin-left: 75px;
+    border-color: black;
+    box-direction:none;
+}
+.Status{
+    width: 450px;
+    margin-left: 125px;
+    border-color: black;
+}
+.MemY{
+    width: 450px;
+    margin-left: 70px;
+    border-color: black;
+}
+.label{
+    padding-left: 20px;
+}
+.formfield{
+    position: relative;
+}
+.stfield{
+    position: absolute;
+    margin-left: 900px;
+    
+}
+.MemYfield{
+    position: absolute;
+    margin-left: 900px;
+    margin-top: 90px;
+}
+.Regi{
+    color: black;
+}
+.btnclass{
+    background-color: rgb(3, 20, 146);
+    border-color:  rgb(3, 20, 146);
+    text-decoration: none;
+    margin-left: 3px;
+    transition: transform 0.5s;
+}
+/* <-------------------------------------------------------------------------------> */
+
+.tablefield{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.headtxt{
+    background-color: rgb(3, 20, 146);
+    border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white;
+    color: antiquewhite;
+    font-weight: 600;
+}
+.headtxtplus{
+    background-color: rgb(3, 20, 146);
+    margin-left: 10px ;
+    /* border-bottom: 1px solid white;
+    padding: 10px; 
+    border-right: 2px solid white; */
+}
+.headNew{
+    color: white;
+    margin-left: 8px;
+}
+.fortrash{
+    padding: 0px;
+    /* height: fit-content; */
+    box-sizing: border-box;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.trash{
+    padding: 0;
+    
+}

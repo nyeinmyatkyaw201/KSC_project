@@ -1,0 +1,123 @@
+<div class="border">
+    <div class="photoUpload" style="width: 18rem;">
+      <div class="card"  >
+        <img [src]="imageUrls[0]" class="UploadedImage inner-circle" alt="Uploaded Picture">
+      </div>
+      <div class="card-body">
+  
+        <input type="file" #fileInput class="btn btn-primary btnclass" style="display: none" (change)="handleFileSelect($event)">
+          <button class="btn btn-primary btnclass" (click)="fileInput.click()">Upload Picture</button>  
+      </div>
+    </div>
+  
+    <div class="recformField">
+      <form>
+        <div class="input-box">
+            <td class="A-margin">
+                <label class="form-label">အဆိုပြုသူ ၁ အသင်းသားနံပါတ် :</label>
+            </td>
+            <td>
+            <input 
+            type="text"
+            class="recA form-control"
+            name="Recommendation_A_Member1_Number"
+            id="Recommendation_A_Member1_Number"
+            [(ngModel)] = "Recommandationdata.Recommendation_A_Member1_Number"
+            >
+            </td>
+        </div>
+        <div class="input-box recomd-A ">
+          <td class="A-margin">
+              <label class="form-label">အဆိုပြုသူ ၁ အမည် :</label>
+          </td>
+          <td>
+          <input 
+          type="text"
+          class="recA form-control"
+          name="Recommendation_A_Member1_Name"
+          id="Recommendation_A_Member1_Name"
+          [(ngModel)] = "Recommandationdata.Recommendation_A_Member1_Name"
+          >
+          </td>
+      </div>
+      </form>
+    </div>
+    <div class="recformField">
+      <form>
+        <div class="input-box">
+            <td class="A-margin">
+                <label class="form-label">အဆိုပြုသူ ၂ အသင်းသားနံပါတ် :</label>
+            </td>
+            <td>
+            <input 
+            type="text"
+            class="recA form-control"
+            name="Recommendation_A_Member2_Number"
+            id="Recommendation_A_Member2_Number"
+            [(ngModel)] = "Recommandationdata.Recommendation_A_Member2_Number"
+            >
+            </td>
+        </div>
+        <div class="input-box recomd-A ">
+          <td class="A-margin">
+              <label class="form-label">အဆိုပြုသူ ၂ အမည် :</label>
+          </td>
+          <td>
+          <input 
+          type="text"
+          class="recA form-control"
+          name="Recommendation_A_Member1_Name"
+            id="Recommendation_A_Member1_Name"
+            [(ngModel)] = "Recommandationdata.Recommendation_A_Member2_Name"
+          >
+          </td>
+      </div>
+      </form>
+    </div>
+  
+    <div class="tablefield">
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th scope="col" class="headtxt">Decreption</th>
+              <th scope="col" class="headtxtp">Photo</th>
+              <th scope="col" class="blank"></th>
+              <th scope="col" class="blank"></th>
+              <!-- <th scope="col" class="headtxt">Relation</th>
+              <th scope="col" class="headtxt">Remaining Leave Days</th>
+              <th scope="col" class="headtxt">Leave Year</th>
+              <th scope="col" class="headtxt">Carry Forward</th>
+              <th scope="col" class="headtxtplus">
+                <a 
+                  ><i class="fa fa-plus headNew" aria-hidden="true"></i
+                ></a>
+              </th> -->
+            </tr>
+          </thead>
+          <tbody *ngFor ="let uploadedfile of uploadedFiles,let i = index" >
+            <tr>
+              <tr>
+                <td scope="row"></td>
+                <td class="t2">{{uploadedfile.t2}}</td>
+              <td class="trash tdbgcolor">
+                <a class="fortrash"
+                  ><img src="../../assets/images/eye.png" (click)="viewImage(i)" class="icon" alt="">
+                </a>
+              </td>
+              <td class="trash tdbgcolor">
+                <a class="fortrash">
+                  <img src="../../assets/images/close.png" (click)="removeFile(i)" class="icon" alt="">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  
+  <div  class="button-container">
+    <button class="btn btn-primary btnend"  (click)="goback()"><span>&lt;&lt;</span> Previous</button>
+    <button class="btn btn-primary btnend" (click)="saveFiles()">Save</button>
+    <button class="btn btn-primary btnend">Summit</button>
+  </div>
+  
