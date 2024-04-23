@@ -5,7 +5,7 @@
 }
 
 .headtxt{
-    background-color: rgb(76, 96, 246);
+    background-color: rgb(112, 112, 246) !important;
     border-bottom: 1px solid white;
     padding: 10px; 
     border-right: 2px solid white;
@@ -13,7 +13,7 @@
     font-weight: 600;
 }
 .headtxtplus{
-    background-color: rgb(39, 64, 248);
+    background-color: rgb(39, 64, 248) !important;
     margin-left: 10px ;
     /* border-bottom: 1px solid white;
     padding: 10px; 
@@ -21,7 +21,7 @@
 }
 .headtxtp{
     width: 350px;
-    background-color: rgb(76, 96, 246);
+    background-color: rgb(112, 112, 246) !important;
     border-bottom: 1px solid white;
     padding: 10px; 
     border-right: 2px solid white;
@@ -30,7 +30,7 @@
 }
 
 .blank{
-    background-color: rgb(76, 96, 246);
+    background-color: rgb(112, 112, 246) !important;
     border-bottom: 1px solid white;
     padding: 10px; 
     border-right: 2px solid white;
@@ -120,12 +120,15 @@
     display: inline-block;
 }
 .recomd-A{
-    margin-left: 40px;
+    margin-left: 400px;
 }
 .recA{
     width: 350px;
     border-color: black;
 }
 .A-margin{
-    padding: 20px;
+    padding: 20px  
+}
+.A-Namemargin{
+    padding: 20px 93px 20px 20px;
 }

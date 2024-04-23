@@ -1,6 +1,6 @@
 
 .bg-body-tertiary{
-    background-color: rgb(47, 116, 244)!important;
+    background-color: rgb(47, 116, 244);
 }
 .navbar-brand{
     color: #ffffffff;
@@ -53,7 +53,7 @@
     color: black;
 }
 .btnclass{
-    background-color: rgb(3, 20, 146);
+    background-color: rgb(3, 20, 146)!important;
     border-color:  rgb(3, 20, 146);
     text-decoration: none;
     margin-left: 3px;
@@ -67,7 +67,7 @@
 }
 
 .headtxt{
-    background-color: rgb(3, 20, 146);
+    background-color: rgb(3, 20, 146)!important;
     border-bottom: 1px solid white;
     padding: 10px; 
     border-right: 2px solid white;
@@ -75,7 +75,7 @@
     font-weight: 600;
 }
 .headtxtplus{
-    background-color: rgb(3, 20, 146);
+    background-color: rgb(3, 20, 146)!important;
     margin-left: 10px ;
     /* border-bottom: 1px solid white;
     padding: 10px; 

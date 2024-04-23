@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { FormRecommandationModel } from './upload';
 import { Router } from '@angular/router';
@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css']
+  styleUrls: ['./upload.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UploadComponent implements OnInit {
   constructor(private apiService: ApiService,private api : ApiService,private router: Router,){}
@@ -29,6 +30,7 @@ export class UploadComponent implements OnInit {
       for (let i = 0; i < files.length; i++) {
         const file: File = files.item(i) as File;
         this.uploadedFiles.push(file);
+        console.log(this.uploadedFiles,">>>>>>>")
         this.getImageUrl(file);
       }
     }
@@ -43,6 +45,7 @@ export class UploadComponent implements OnInit {
 
   viewImage(index: number): void {
     const file = this.uploadedFiles[index];
+    console.log(file)
     if (file && file.t1) {
       this.imageUrls = []; // Clear existing imageUrls array
       const imageUrl = file.t1;
@@ -81,11 +84,12 @@ export class UploadComponent implements OnInit {
         }
       });
     });
-
+    console.log(formData,">>>>>>>>")
     this.uploadFiles(formData);
   }
 
   uploadFiles(formData: FormData): void {
+    
     this.apiService.upload(formData).subscribe({
       next: (response: any) => {
         console.log('Files uploaded successfully:', response);
