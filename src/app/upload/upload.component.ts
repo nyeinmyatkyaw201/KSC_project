@@ -18,6 +18,13 @@ export class UploadComponent implements OnInit {
   Recommandationdata: FormRecommandationModel = new FormRecommandationModel();
   
   ngOnInit(): void {
+   var  id = this.api.parentid
+    const key = `form_${id}`;
+        
+    const saveData =    localStorage.getItem(key);
+    if(saveData){
+      this.Recommandationdata = JSON.parse(saveData)
+    }
     this.loadUploadedFiles();
   }
   
@@ -89,11 +96,16 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFiles(formData: FormData): void {
-    
-    this.apiService.upload(formData).subscribe({
+    const id = this.api.parentid;
+    console.log(id)
+    this.apiService.upploadAndCreate(formData,id).subscribe({
       next: (response: any) => {
         console.log('Files uploaded successfully:', response);
         alert("Successfully uploaded");
+        const key = `form_${id}`;
+        
+        localStorage.setItem(key, JSON.stringify(this.Recommandationdata));
+        console.log(response)
         this.uploadedFiles = [];
         this.filesToDelete = [];
         this.loadUploadedFiles();
@@ -123,6 +135,7 @@ export class UploadComponent implements OnInit {
   }
   goback(){
     const parentid = this.api.parentid;
+    console.log(parentid)
     this.router.navigateByUrl(`registration/${parentid}`)
   }
 }

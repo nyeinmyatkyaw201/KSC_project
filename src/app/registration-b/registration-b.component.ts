@@ -17,7 +17,7 @@ export class RegistrationBComponent implements OnInit {
   ngOnInit(): void {
     this.getRelation();
     this.getBmember();
-    console.log(this.RegiDatas,">>>>>>>>>>>")
+    console.log(this.RegiDatas, '>>>>>>>>>>>');
   }
   BMember: any = [];
   relations: any = [];
@@ -33,27 +33,30 @@ export class RegistrationBComponent implements OnInit {
     const newFormRegiModel: FormRegiModel = new FormRegiModel();
     newFormRegiModel.parentid = parentid;
     this.RegiDatas.push(newFormRegiModel);
-    console.log(this.RegiDatas,"<<<<<<<<>>>>>>>>")
+    console.log(this.RegiDatas, '<<<<<<<<>>>>>>>>');
   }
   removeRow(index: number) {
     this.RegiDatas.splice(index, 1);
   }
-  createBMember() {
-    console.log(this.RegiDatas);
-    this.api.createBMember(this.RegiDatas).subscribe({
-      next: () => {
-       
-        console.log('B Member created Successfull');
-        var parentid = this.route.snapshot.paramMap.get('id');
-        const key = `RegiDatas_${parentid}`;
-        this.api.parentid = parentid;
-        localStorage.setItem(key, JSON.stringify(this.RegiDatas));
-        this.router.navigateByUrl(`upload`);
-      },
-      error: (err) => {
-        alert('Failed to create B Member');
-        console.log('Failed to create B Member', err);
-      },
+  createBMember(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      console.log(this.RegiDatas);
+      this.api.createBMember(this.RegiDatas).subscribe({
+        next: () => {
+          console.log('B Member created Successfully');
+          var parentid = this.route.snapshot.paramMap.get('id');
+          const key = `RegiDatas_${parentid}`;
+          this.api.parentid = parentid;
+          localStorage.setItem(key, JSON.stringify(this.RegiDatas));
+          this.router.navigateByUrl(`upload`);
+          resolve();
+        },
+        error: (err) => {
+          alert('Failed to create B Member');
+          console.log('Failed to create B Member', err);
+          reject(err);
+        },
+      });
     });
   }
   getRelation() {
@@ -69,25 +72,46 @@ export class RegistrationBComponent implements OnInit {
     if (storedData) {
       this.RegiDatas = JSON.parse(storedData);
     }
-  };
-  getandDelete(){
-    var parentid = this.route.snapshot.paramMap.get('id');
-    this.api.getandDelete(parentid).subscribe({
-      next : ()=>{
-        console.log("delete Successfully");
-        
-      },
-      error : (err)=>{
-        console.log(err)
-      }
-    })
   }
-  save(){
-    if(this.RegiDatas.length == 0){
-      this.router.navigateByUrl('upload')
-    }else if(this.RegiDatas.length > 0){
+  getandDelete(): Promise<void> {
+    const parentid = this.route.snapshot.paramMap.get('id');
+    return new Promise<void>((resolve, reject) => {
+      this.api.getandDelete(parentid).subscribe({
+        next: () => {
+          console.log('Delete Successfully');
+
+          resolve();
+        },
+        error: (err) => {
+          console.log(err);
+
+          reject(err);
+        },
+      });
+    });
+  }
+  save() {
+    if (this.RegiDatas.length == 0) {
       this.getandDelete()
-      this.createBMember()
+      var parentid = this.route.snapshot.paramMap.get('id');
+      this.api.parentid = parentid;
+      const key = `RegiDatas_${parentid}`;
+      localStorage.removeItem(key);
+      this.router.navigateByUrl('upload');
+      
+    } else if (this.RegiDatas.length > 0) {
+      this.combinedFunction();
+    }
+  }
+  async combinedFunction() {
+    try {
+      await this.getandDelete();
+      await this.createBMember();
+
+      console.log('All operations completed successfully.');
+    } catch (error) {
+      console.error(error);
+      alert(error);
     }
   }
 }

@@ -52,8 +52,8 @@ export class ApiService {
     return this.http.delete(`http://localhost:3000/api/v1/member/upload/deletephoto/${id}`)
   }
 
-  upploadAndCreate(data:any){
-    return this.http.post(`http://localhost:3000/api/v1/A_member/recmember_of_upload`,data);
+  upploadAndCreate(data:any,id: any){
+    return this.http.post(`http://localhost:3000/api/v1/A_member/recmember_of_upload/${id}`,data);
   }
 
 }
