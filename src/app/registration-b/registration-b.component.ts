@@ -41,7 +41,8 @@ export class RegistrationBComponent implements OnInit {
   createBMember(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       console.log(this.RegiDatas);
-      this.api.createBMember(this.RegiDatas).subscribe({
+      const parentid = this.route.snapshot.paramMap.get('id');
+      this.api.createBMember(this.RegiDatas,parentid).subscribe({
         next: () => {
           console.log('B Member created Successfully');
           var parentid = this.route.snapshot.paramMap.get('id');
@@ -100,18 +101,8 @@ export class RegistrationBComponent implements OnInit {
       this.router.navigateByUrl('upload');
       
     } else if (this.RegiDatas.length > 0) {
-      this.combinedFunction();
+      this.createBMember();
     }
   }
-  async combinedFunction() {
-    try {
-      await this.getandDelete();
-      await this.createBMember();
-
-      console.log('All operations completed successfully.');
-    } catch (error) {
-      console.error(error);
-      alert(error);
-    }
-  }
+ 
 }

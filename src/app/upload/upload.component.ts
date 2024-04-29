@@ -10,15 +10,17 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class UploadComponent implements OnInit {
-  constructor(private apiService: ApiService,private api : ApiService,private router: Router,){}
+  constructor(private apiService: ApiService,private router: Router,){}
   @ViewChild('fileInput') fileInput!: ElementRef;
   uploadedFiles: any[] = [];
   imageUrls: string[] = [];
   filesToDelete: any[] = [];
   Recommandationdata: FormRecommandationModel = new FormRecommandationModel();
+  errormessage = '';
   
   ngOnInit(): void {
-   var  id = this.api.parentid
+    this.getAmemberName();
+   var  id = this.apiService.parentid
     const key = `form_${id}`;
         
     const saveData =    localStorage.getItem(key);
@@ -57,6 +59,7 @@ export class UploadComponent implements OnInit {
       this.imageUrls = []; // Clear existing imageUrls array
       const imageUrl = file.t1;
       this.imageUrls.push(imageUrl); // Set the clicked image URL
+      console.log(this.imageUrls)
     } else {
       console.error("Invalid file object:", file);
     }
@@ -74,6 +77,7 @@ export class UploadComponent implements OnInit {
     formData.append('Recommendation_A_Member2_Name', this.Recommandationdata.Recommendation_A_Member2_Name);
 
     const validFileIds = this.filesToDelete.filter(file => file && file.id !== undefined);
+    console.log(this.uploadedFiles,"????????????")
 
     if (validFileIds.length === 0) {
       console.log('No valid file IDs to delete');
@@ -96,7 +100,8 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFiles(formData: FormData): void {
-    const id = this.api.parentid;
+    console.log(formData)
+    const id = this.apiService.parentid;
     console.log(id)
     this.apiService.upploadAndCreate(formData,id).subscribe({
       next: (response: any) => {
@@ -117,7 +122,8 @@ export class UploadComponent implements OnInit {
   }
 
   loadUploadedFiles(): void {
-    this.apiService.Uploadedfile().subscribe((result: any) => {
+   var id = this.apiService.parentid
+    this.apiService.Uploadedfile(id).subscribe((result: any) => {
       this.uploadedFiles = result.data;
       console.log(this.uploadedFiles);
     });
@@ -134,8 +140,40 @@ export class UploadComponent implements OnInit {
     }
   }
   goback(){
-    const parentid = this.api.parentid;
+    const parentid = this.apiService.parentid;
     console.log(parentid)
     this.router.navigateByUrl(`registration/${parentid}`)
   }
+  getAmemberName(){
+    this.apiService.getAmemberName().subscribe((result: any) => {
+      
+      console.log(result);
+    });
+  }
+  save(){
+    if(!this.Recommandationdata.Recommendation_A_Member1_Number){
+      this.errormessage = 'အဆိုပြုသူ ၁ အသင်းသား နံပါတ် ရိုက်ထည့်ပေးပါ'
+      setTimeout(() => {
+        this.errormessage = '';
+      }, 2000);
+    }else if(!this.Recommandationdata.Recommendation_A_Member1_Name){
+      this.errormessage = 'အဆိုပြုသူ ၁ အသင်းသား နာမည် ရိုက်ထည့်ပေးပါ'
+      setTimeout(() => {
+        this.errormessage = '';
+      }, 2000);
+    }else if(!this.Recommandationdata.Recommendation_A_Member2_Number){
+      this.errormessage = 'အဆိုပြုသူ ၂ အသင်းသား နံပါတ် ရိုက်ထည့်ပေးပါ'
+      setTimeout(() => {
+        this.errormessage = '';
+      }, 2000);
+    }else if(!this.Recommandationdata.Recommendation_A_Member2_Name){
+      this.errormessage = 'အဆိုပြုသူ ၂ အသင်းသား နာမည် ရိုက်ထည့်ပေးပါ'
+      setTimeout(() => {
+        this.errormessage = '';
+      }, 2000);
+    }else{
+      this.saveFiles();
+    }
+  }
+
 }

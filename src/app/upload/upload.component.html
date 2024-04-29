@@ -126,6 +126,7 @@
   <button class="btn btn-primary btnend">Summit</button>
 </div> -->
 <div class="justify-end flex">
+  <div class="mt-1" *ngIf="errormessage"><p class="text-red-600 text-lg">{{errormessage}}</p></div><span class="ml-20"></span>
   <div class="p-1">
     <button
       class="bg-indigo-400 hover:bg-blue-500 text-sm text-black font-bold py-2 px-3 rounded justify-between"
@@ -134,7 +135,8 @@
     <i class="fa fa-angle-double-left" aria-hidden="true"></i> Previous
     </button>
   </div>
-  <div class="pl-1 pt-1 pb-1 pr-2" (click)="saveFiles()">
+  
+  <div class="pl-1 pt-1 pb-1 pr-2" (click)="save()">
     <button
       class="bg-indigo-400 hover:bg-blue-500 text-sm text-black font-bold py-2 px-3 rounded justify-between"
     >
